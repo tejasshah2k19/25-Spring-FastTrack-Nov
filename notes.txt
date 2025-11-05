@@ -1,0 +1,76 @@
+.xml -> 
+
+web.xml 
+
+spring.xml {1-2 hrs } 
+
+
+spring boot -> 
+	zero config 
+
+
+src ->	main ->	
+				java 	{ java code  } com -> { controller , dao , util , bean }  
+				resources { application.properties } 
+				webapp 
+
+
+
+------------------------------------------------------------------------------
+
+after project creation 
+
+jsp -> 
+
+1) create webapp folder 
+	create WEB-INF folder inside webapp folder 
+		create jsp/views folder inside WEB-INF folder
+
+2) jsp lib -> jsp run -> 
+		tomcat embeded jasper 
+		
+3) jsp -> configuration-> application.properties 
+		spring.mvc.view.prefix=/WEB-INF/views/
+		spring.mvc.view.suffix=.jsp
+		
+------------------------------------------------------------------------------
+
+
+jsp work -> 
+
+
+how to create controller in spring? 
+ans => create class inside controller folder 
+		and apply @Controller annotation 
+		
+
+
+
+
+Login.jsp
+			email
+			password
+						submit 
+						
+	authenticate -> read print   
+					email => admin@gmail.com
+					password => admin 
+							Home 
+							
+							Login 
+
+----------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
