@@ -61,9 +61,22 @@ Login.jsp
 
 ----------------------------------------------------------------------------------
 
+how to perform validation !! 
 
+1) add validation jar / dep / lib in pom.xml 
+	project -> right click -> spring -> add/edit starter -> search:type validation -> validation ->
+	tick -> next -> tick pom.xml -> finish.
 
+2) bean -> validation annotation -> apply 
+				@NotBlank 
+				
+3) controller -> check using @Validated and get error in BindingResult 
+				@Validated StudentBean studentBean, BindingResult result
 
+4) controller -> using BindingResult hasErrors() method check validation is fail or success
+
+ 
+----------------------------------------------------------------------------------
 
 
 

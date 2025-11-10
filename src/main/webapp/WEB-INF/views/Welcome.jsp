@@ -8,5 +8,8 @@
 </head>
 <body>
 <h2>Welcome</h2>
+
+FirstName : ${studentBean.firstName}<br><br> 
+Email : ${studentBean.email}
 </body>
 </html>
