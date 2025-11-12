@@ -28,6 +28,10 @@
 	Password: <input type="text" name="password"/>
 	${result.getFieldError("password").getDefaultMessage()}
 	<br><br>
+	Age: <input type="text" name="age"/>
+	${result.getFieldError("age").getDefaultMessage()}
+	<br><br>
+	
 	
 	<input type="submit" value="Signup"/> 
 </form>

@@ -77,7 +77,8 @@ how to perform validation !!
 
  
 ----------------------------------------------------------------------------------
-
+required -> data must be -> @NotBlank {string} 
+length ->  @Min { numberic } 
 
 
 
