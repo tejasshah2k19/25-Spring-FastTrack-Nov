@@ -80,6 +80,79 @@ how to perform validation !!
 required -> data must be -> @NotBlank {string} 
 length ->  @Min { numberic } 
 
+----------------------------------------------------------------------------------
+adv java ->
+
+mysql -> mysql driver 
+
+DbConnection
+				driverName 
+				url
+				userName
+				password
+				
+	jdbc api 
+		java.sql.Connection
+		java.sql.PreparedStatement 
+	
+spring jdbc connection -------->
+spring -> 
+				step1: 
+						jar / lib / dep 
+						1.1) mysql : connector 
+						1.2) spring data jdbc 		
+						
+				step2:			
+						application.properties 	
+							url
+							userName
+							password 
+							
+---------------------------------------------------------
+adv java ->
+	PreparedStatement -> query -> 
+	query 
+	dao 
+	
+
+spring -> 
+	JdbcTemplate -> sql -> query -> 
+	
+do not use new keyword -> 
+	singleton -> @Autowired  
+
+---------------------------------------------------------
+
+create database springfasttrack; 
+
+use springfasttrack; 
+
+create table students(
+	studentId integer primary key auto_increment,
+	firstName varchar(20),
+	lastName varchar(20),
+	email varchar(20),
+	password varchar(20),
+	age integer
+);
+
+---------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
