@@ -17,6 +17,10 @@ import com.dao.StudentDao;
 @Controller
 public class StudentController {
 
+	
+	@Autowired
+	BCryptPasswordEncoder passwordEncoder; 
+	
 	@Autowired
 	StudentDao studentDao;
 
@@ -24,7 +28,7 @@ public class StudentController {
 	public String newStudentReg() {
 		return "NewStudent";
 	}
-
+	//100 
 	@PostMapping("savestudent")
 	public String saveStudent(@Validated StudentBean studentBean, BindingResult result, Model model) {
 		System.out.println(studentBean.getFirstName());
@@ -36,7 +40,6 @@ public class StudentController {
 			model.addAttribute("result", result);
 			return "NewStudent";
 		} else {
-			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 			String encodedPassword = passwordEncoder.encode(studentBean.getPassword());
 			studentBean.setPassword(encodedPassword);
 			// db insert
