@@ -1,6 +1,9 @@
 package com.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,8 +18,8 @@ import com.dao.StudentDao;
 public class StudentController {
 
 	@Autowired
-	StudentDao studentDao; 
-	
+	StudentDao studentDao;
+
 	@GetMapping("newstudent")
 	public String newStudentReg() {
 		return "NewStudent";
@@ -30,19 +33,40 @@ public class StudentController {
 		System.out.println(studentBean.getPassword());
 
 		if (result.hasErrors()) {
-			model.addAttribute("result",result);
+			model.addAttribute("result", result);
 			return "NewStudent";
 		} else {
-			
-			//db insert 
+			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+			String encodedPassword = passwordEncoder.encode(studentBean.getPassword());
+			studentBean.setPassword(encodedPassword);
+			// db insert
 			studentDao.addStudent(studentBean);
-			
 			// send studentBean to Welcome.jsp
 			model.addAttribute("studentBean", studentBean);
 			return "Welcome";
 		}
 	}
+
+	@GetMapping("liststudents")
+	public String listStudent(Model model) {
+		List<StudentBean> students = studentDao.getAllStudents();
+		model.addAttribute("students",students);
+		return "ListStudents";
+	}
+	
+	@GetMapping("deletestudent")
+	public String deleteStudent(Integer studentId,Model model) {
+		//1 read student id 
+		//2 deleteStudent -> StudentDao 
+		//3 output -> response -> list page 
+		studentDao.deleteStudent(studentId);
+		List<StudentBean> students = studentDao.getAllStudents();
+		model.addAttribute("students",students);
+		
+		return "ListStudents";
+	}
+	
+	
+	
+
 }
-
-
-

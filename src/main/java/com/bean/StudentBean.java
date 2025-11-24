@@ -8,6 +8,8 @@ import jakarta.validation.constraints.Size;
 
 public class StudentBean {
 
+	Integer studentId; 
+	
 	@NotBlank(message = "Please Enter FirstName")
 	@Size(min = 2,message = "Please Enter Valid name - atleast 2 char")
 	@Size(max = 50,message = "Please Enter Valid name - max 50 char")
@@ -73,6 +75,14 @@ public class StudentBean {
 
 	public void setAge(Integer age) {
 		this.age = age;
+	}
+
+	public Integer getStudentId() {
+		return studentId;
+	}
+
+	public void setStudentId(Integer studentId) {
+		this.studentId = studentId;
 	}
 	
 	

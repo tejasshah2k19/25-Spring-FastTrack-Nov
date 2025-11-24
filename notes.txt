@@ -74,8 +74,13 @@ how to perform validation !!
 				@Validated StudentBean studentBean, BindingResult result
 
 4) controller -> using BindingResult hasErrors() method check validation is fail or success
-
+					if(result.hasErrors()){
+						return "jsp name"; 
+					}else{
+						db insert 
+					}
  
+5)  
 ----------------------------------------------------------------------------------
 required -> data must be -> @NotBlank {string} 
 length ->  @Min { numberic } 
@@ -137,13 +142,37 @@ create table students(
 );
 
 ---------------------------------------------------------
+alter table students modify password varchar(70);
 
+---------------------------------------------------------
 
+password encryption -> 
 
+	bcrypt algo 
+	 
+step 1 :  
+		jar / lib / dep 
+ 		spring-security-crypto
+		
+		pom.xml 
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-crypto -->
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-crypto</artifactId>
+ 		</dependency>
 
+step 2: 
+		class -> BcryptPasswordEncoder -> object 
+		
+step 3: using BcryptPasswordEncoder object 
+				call encode() to encrypt/encode your password 
+				 
+step 4: set this encoded password in your bean 
 
+step 5: save your bean - insert query 
 
-
+--------------------------------------------------------------------------
+						
 
 
 
