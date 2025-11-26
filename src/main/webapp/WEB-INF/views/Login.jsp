@@ -8,5 +8,11 @@
 </head>
 <body>
 <h2>Login</h2>
+<form action="authenticate" method="post">
+Email  : <input type="text" name="email"/><br><br> 
+Password : <input type="text" name="password"/><br><br> 
+	<input type="submit" value="Login"/>
+</form>
+
 </body>
 </html>

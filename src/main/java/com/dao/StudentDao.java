@@ -26,6 +26,18 @@ public class StudentDao {
 		List<StudentBean> students = stmt.query(q, new BeanPropertyRowMapper(StudentBean.class));
 		return students;
 	}
+	
+	public  StudentBean  findByEmail(String email) {
+		String q = "select * from students where email  = ? ";
+		List<StudentBean> students = stmt.query(q, new BeanPropertyRowMapper(StudentBean.class),email);
+		
+		if(students.isEmpty())
+		{
+			return null;
+		}else {
+			return students.get(0);
+		}
+	}
 
 	//delete from students where studentId = XX 
 	public void deleteStudent(Integer studentId){
