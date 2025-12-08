@@ -172,11 +172,67 @@ step 4: set this encoded password in your bean
 step 5: save your bean - insert query 
 
 --------------------------------------------------------------------------
+how to send email ?
+
+send welcome mail 
+
+send otp 
+
+confirmation link 
+
+order / confirmation / feedback
 						
+SMTP server -> 
+HTTP server -> tomcat 
+
+mail provider -> 
+		gmail-->  
+		mailchimp 
+		twilo 
+		sendgrid
+		zoho 
+		mailgun 
+
+
+how to? steps ? 
+
+step 1: java mail jar [pom.xml ] [ maven spring starter ]
+
+step 2: gmail configuration  [ application.properties ] 
+			gmail server config 
+			gmail credentials 
+
+step 3: @Service
+public class MailService {
+
+	@Autowired
+	JavaMailSender mailSender;//singleton 
+	
+	public void sendWelcomeMail(StudentBean student) {
+		//logic 
+		SimpleMailMessage message =new SimpleMailMessage();
+		message.setTo(student.getEmail());
+		message.setSubject("Welcome mail");
+		message.setText("Welcome to alibaba.com , we are happy to onboard you");
+		
+		mailSender.send(message);
+		
+		
+	}
+}
+
+
+step 4: 
+		call from controller 
+				mailService.sendWelcomeMail(studentBean);
+			
+			
+			
 
 
 
 
+---------------------------------------------------------------------------------		
 
 
 

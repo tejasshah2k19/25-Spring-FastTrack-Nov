@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.bean.StudentBean;
 import com.dao.StudentDao;
+import com.service.MailService;
 
 @Controller
 public class StudentController {
@@ -23,7 +24,10 @@ public class StudentController {
 	
 	@Autowired
 	StudentDao studentDao;
-
+	
+	@Autowired
+	MailService mailService; 
+	
 	@GetMapping("newstudent")
 	public String newStudentReg() {
 		return "NewStudent";
@@ -44,6 +48,9 @@ public class StudentController {
 			studentBean.setPassword(encodedPassword);
 			// db insert
 			studentDao.addStudent(studentBean);
+			//send welcome mail to student
+			mailService.sendWelcomeMail(studentBean);
+			
 			// send studentBean to Welcome.jsp
 			model.addAttribute("studentBean", studentBean);
 			return "Welcome";
