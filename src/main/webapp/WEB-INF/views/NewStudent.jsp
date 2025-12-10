@@ -12,7 +12,7 @@
 </style>
 </head>
 <body>
-<form action="savestudent" method="post">
+<form action="savestudent" method="post" enctype="multipart/form-data">
 
 	FirstName: <input type="text" name="firstName"/>
 	<span class="error">  
@@ -31,7 +31,8 @@
 	Age: <input type="text" name="age"/>
 	${result.getFieldError("age").getDefaultMessage()}
 	<br><br>
-	
+	ProfilePic: <input type="file" name="profilePic" />
+	<Br><br>
 	
 	<input type="submit" value="Signup"/> 
 </form>

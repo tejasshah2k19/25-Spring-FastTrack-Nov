@@ -233,8 +233,73 @@ step 4:
 
 
 ---------------------------------------------------------------------------------		
-
-
+file uploading 
+	pic 
+	pdf
+	word
+	
+	profilePic -> 
+	 
+	PART 1  
+	client side -> server side -> profilePic  
+	 
+	step 1: 
+			form input type file name="profilePic" 
+	
+	step 2: 
+			form 
+				method="post" 
+				encType="multipart/form-data"
+				
+	step 3: read server file? in controller 
+			saveStudent(	MultipartFile profilePic)	
+	
+	
+	PART 2 ->upload image to cloudinary 
+	
+	step 4: 
+			create account in cloudinary , login  
+			
+	step 5:  			
+			get all the api key details 
+			apikey : 781758332318518
+			secret : hr2hMchu6JApgB9ECnaoCfUZ_0I
+			cloud  : dqwes5eev
+			
+	step 6:		
+			jar / dep / lib -> cloudinary 
+			<dependency>
+				<groupId>com.cloudinary</groupId>
+				<artifactId>cloudinary-http44</artifactId>
+				<version>1.31.0</version> <!-- or use latest -->
+			</dependency>
+				
+	step 7: 
+			code file -> cloudinary upload 		
+			first we create singleton in Application file 
+			@Bean
+			Cloudinary getCloudinary() {
+				Map<String, String> config = ObjectUtils.asMap("cloud_name", "dqwes5eev", "api_key", "781758332318518",
+						"api_secret", "hr2hMchu6JApgB9ECnaoCfUZ_0I");
+				return new Cloudinary(config);
+			}
+	
+	step 8: 
+		   now create cloudinary instance in controller and upload file 
+		   
+		   @Autowired
+		   Cloudinary cloudinary;
+			
+			
+			try {
+				 Map uploadResult = 	cloudinary.uploader().upload(profilePic.getBytes(), null);
+				String profilePicURL =  uploadResult.get("secure_url").toString();
+				System.out.println(profilePicURL);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}	
+---------------------------------------------------------------------------------		
 
 
 
